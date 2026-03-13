@@ -1,7 +1,8 @@
 ---
 title: '从零搭建个人博客：Hexo + Vercel + 桌面发布工具'
 date: 2026-03-13 11:38:14
-tags: [[博客, Hexo, Vercel, Electron] categories: [折腾记录]]
+tags: [博客, Hexo, Vercel, Electron]
+categories: [折腾记录]
 ---
 
 今天花了几个小时，从零搭了一个完整的个人博客系统——不只是能跑起来，还顺带做了一个好看的桌面写作工具，写完一键发布。这篇文章把整个过程记下来，给同样想折腾的人参考。
