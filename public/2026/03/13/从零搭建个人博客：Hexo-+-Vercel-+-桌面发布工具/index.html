@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>从零搭建个人博客：Hexo + Vercel + 桌面发布工具 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="今天花了几个小时，从零搭了一个完整的个人博客系统——不只是能跑起来，还顺带做了一个好看的桌面写作工具，写完一键发布。这篇文章把整个过程记下来，给同样想折腾的人参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零搭建个人博客：Hexo + Vercel + 桌面发布工具">
+<meta property="og:url" content="http://example.com/2026/03/13/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9AHexo-+-Vercel-+-%E6%A1%8C%E9%9D%A2%E5%8F%91%E5%B8%83%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天花了几个小时，从零搭了一个完整的个人博客系统——不只是能跑起来，还顺带做了一个好看的桌面写作工具，写完一键发布。这篇文章把整个过程记下来，给同样想折腾的人参考。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-13T03:38:14.000Z">
+<meta property="article:modified_time" content="2026-03-13T11:41:34.464Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Electron">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Vercel">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-从零搭建个人博客：Hexo-+-Vercel-+-桌面发布工具" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/03/13/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9AHexo-+-Vercel-+-%E6%A1%8C%E9%9D%A2%E5%8F%91%E5%B8%83%E5%B7%A5%E5%85%B7/" class="article-date">
+  <time class="dt-published" datetime="2026-03-13T03:38:14.000Z" itemprop="datePublished">2026-03-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/">折腾记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      从零搭建个人博客：Hexo + Vercel + 桌面发布工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天花了几个小时，从零搭了一个完整的个人博客系统——不只是能跑起来，还顺带做了一个好看的桌面写作工具，写完一键发布。这篇文章把整个过程记下来，给同样想折腾的人参考。</p>
+<span id="more"></span>
+
+<h2 id="整体方案"><a href="#整体方案" class="headerlink" title="整体方案"></a>整体方案</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">写文章（Electron 桌面工具）</span><br><span class="line">  → 保存为 .md 文件</span><br><span class="line">  → git push 到 GitHub</span><br><span class="line">  → Vercel 自动检测更新</span><br><span class="line">  → 部署上线</span><br></pre></td></tr></table></figure>
+
+<p>三个核心工具：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hexo</strong></td>
+<td>静态博客框架，把 Markdown 渲染成网页</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>代码托管，Vercel 从这里拉代码</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>自动部署，push 之后几秒就更新</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="一、安装-Hexo"><a href="#一、安装-Hexo" class="headerlink" title="一、安装 Hexo"></a>一、安装 Hexo</h2><p>先确保电脑装了 <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a>（建议 18+），然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>初始化博客项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>本地预览：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>打开 <code>http://localhost:4000</code> 就能看到默认博客页面。</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my-blog/</span><br><span class="line">├── source/</span><br><span class="line">│   └── _posts/     ← 文章放这里，.md 格式</span><br><span class="line">├── themes/         ← 主题</span><br><span class="line">├── _config.yml     ← 全局配置</span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、推送到-GitHub"><a href="#二、推送到-GitHub" class="headerlink" title="二、推送到 GitHub"></a>二、推送到 GitHub</h2><p>在 GitHub 新建一个仓库（比如 <code>my-blog</code>），然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;init blog&quot;</span></span><br><span class="line">git remote add origin https://github.com/你的用户名/my-blog.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、部署到-Vercel"><a href="#三、部署到-Vercel" class="headerlink" title="三、部署到 Vercel"></a>三、部署到 Vercel</h2><ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://vercel.com/">vercel.com</a>，用 GitHub 账号登录</li>
+<li>点击 <strong>Add New Project</strong>，选择刚才的 <code>my-blog</code> 仓库</li>
+<li>Framework Preset 选 <strong>Other</strong>（Hexo 不在列表里，但 Vercel 能自动识别）</li>
+<li>Build Command 填：<code>npx hexo generate</code></li>
+<li>Output Directory 填：<code>public</code></li>
+<li>点 <strong>Deploy</strong></li>
+</ol>
+<p>部署完成后 Vercel 会给你一个域名，比如 <code>your-blog.vercel.app</code>，博客就上线了。</p>
+<p>之后每次 <code>git push</code>，Vercel 会自动触发重新部署，几十秒就更新完毕。</p>
+<hr>
+<h2 id="四、写文章的正确姿势"><a href="#四、写文章的正确姿势" class="headerlink" title="四、写文章的正确姿势"></a>四、写文章的正确姿势</h2><p>Hexo 文章是 Markdown 格式，放在 <code>source/_posts/</code> 目录下，头部需要写 front matter：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#x27;我的第一篇文章&#x27;</span><br><span class="line">date: 2026-03-13 12:00:00</span><br><span class="line">tags: [随笔, 生活]</span><br><span class="line"><span class="section">categories: [日记]</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">正文内容从这里开始...</span><br></pre></td></tr></table></figure>
+
+<p>手动操作流程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写完文章之后</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;新增文章: 标题&quot;</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>这样每次发文章都要打命令行，有点麻烦——所以我又做了一个桌面工具。</p>
+<hr>
+<h2 id="五、用-Electron-做一个桌面发布工具"><a href="#五、用-Electron-做一个桌面发布工具" class="headerlink" title="五、用 Electron 做一个桌面发布工具"></a>五、用 Electron 做一个桌面发布工具</h2><p>纯命令行发文章不够直观，我用 Electron 做了一个桌面 App：</p>
+<ul>
+<li><strong>左侧</strong>：文章列表，点击切换</li>
+<li><strong>右侧</strong>：分屏编辑器，左写 Markdown，右边实时预览</li>
+<li><strong>顶部</strong>：填写标题、标签、分类</li>
+<li><strong>底部</strong>：一键发布按钮</li>
+</ul>
+<p>点击「发布文章」之后，程序自动：</p>
+<ol>
+<li>把内容写入 <code>source/_posts/标题.md</code></li>
+<li>执行 <code>git add .</code></li>
+<li>执行 <code>git commit -m &quot;新增文章: 标题&quot;</code></li>
+<li>执行 <code>git push</code></li>
+</ol>
+<p>然后 Vercel 自动部署，几十秒后文章上线。</p>
+<h3 id="核心代码片段（发布逻辑）"><a href="#核心代码片段（发布逻辑）" class="headerlink" title="核心代码片段（发布逻辑）"></a>核心代码片段（发布逻辑）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js - Electron 主进程</span></span><br><span class="line">ipcMain.<span class="title function_">handle</span>(<span class="string">&#x27;publish-post&#x27;</span>, <span class="title function_">async</span> (_, &#123; filename, title, tags, categories, body &#125;) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 生成 front matter</span></span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toISOString</span>().<span class="title function_">slice</span>(<span class="number">0</span>, <span class="number">19</span>).<span class="title function_">replace</span>(<span class="string">&#x27;T&#x27;</span>, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> content = <span class="string">`---\ntitle: &#x27;<span class="subst">$&#123;title&#125;</span>&#x27;\ndate: <span class="subst">$&#123;date&#125;</span>\ntags: [<span class="subst">$&#123;tags.join(<span class="string">&#x27;, &#x27;</span>)&#125;</span>]\n---\n\n<span class="subst">$&#123;body&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 写文件</span></span><br><span class="line">  fs.<span class="title function_">writeFileSync</span>(path.<span class="title function_">join</span>(<span class="variable constant_">POSTS_DIR</span>, filename), content, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// git 操作</span></span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">execAsync</span>(<span class="string">&#x27;git add .&#x27;</span>, &#123; <span class="attr">cwd</span>: <span class="variable constant_">BLOG_DIR</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">execAsync</span>(<span class="string">`git commit -m &quot;新增文章: <span class="subst">$&#123;title&#125;</span>&quot;`</span>, &#123; <span class="attr">cwd</span>: <span class="variable constant_">BLOG_DIR</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">execAsync</span>(<span class="string">&#x27;git push&#x27;</span>, &#123; <span class="attr">cwd</span>: <span class="variable constant_">BLOG_DIR</span> &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">ok</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>界面用的暗黑风格，主色调是暗红 + 深蓝，发布成功后有粒子爆破动效。</p>
+<p>打包成单个 <code>.exe</code>，放在桌面，双击就能用，不需要装任何环境。</p>
+<hr>
+<h2 id="六、踩过的坑"><a href="#六、踩过的坑" class="headerlink" title="六、踩过的坑"></a>六、踩过的坑</h2><p><strong>1. Vercel 部署后页面空白</strong></p>
+<p>检查 Output Directory 是否填的 <code>public</code>，Hexo 生成的静态文件在这个目录。</p>
+<p><strong>2. git push 每次都要输密码</strong></p>
+<p>配置 SSH key，或者用 Git Credential Manager：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper manager</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 文章中文文件名乱码</strong></p>
+<p>文章文件名建议用英文或拼音，front matter 里的 <code>title</code> 可以是中文，不影响访问。</p>
+<p><strong>4. Electron 打包体积大</strong></p>
+<p>portable 模式打出来大概 150MB，因为 Electron 本身就包含了一个完整的 Chromium。接受不了可以用 Web 版替代，或者用更轻量的 Tauri（但需要 Rust 环境）。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整套流程搭完之后，写博客的体验非常流畅：</p>
+<ol>
+<li>打开桌面的 <code>BlogPublisher.exe</code></li>
+<li>点「新建」，写文章，实时看预览</li>
+<li>填好标题和标签，点「发布文章」</li>
+<li>等十几秒，博客更新完毕</li>
+</ol>
+<p>从想法到发布，全程不需要碰命令行。</p>
+<p>如果你也想搭一个，整个过程大概需要一两个小时，Hexo 和 Vercel 都有免费额度，完全零成本。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/03/13/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9AHexo-+-Vercel-+-%E6%A1%8C%E9%9D%A2%E5%8F%91%E5%B8%83%E5%B7%A5%E5%85%B7/" data-id="cuidrT5GbX1nmKWDTUdZBYgdC" data-title="从零搭建个人博客：Hexo + Vercel + 桌面发布工具" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vercel/" rel="tag">Vercel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/03/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/">折腾记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vercel/" rel="tag">Vercel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Electron/" style="font-size: 10px;">Electron</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Vercel/" style="font-size: 10px;">Vercel</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/03/13/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%9AHexo-+-Vercel-+-%E6%A1%8C%E9%9D%A2%E5%8F%91%E5%B8%83%E5%B7%A5%E5%85%B7/">从零搭建个人博客：Hexo + Vercel + 桌面发布工具</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
